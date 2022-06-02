@@ -10,13 +10,15 @@ interface ListRequestOptions<T> {
 	delay?: number
 	request: (page: number) => Promise<AxiosResponse<PageAbleData<T>>>
 	onSuccess?: Function
+	checkEmpty?: () => boolean
 }
 
 export function useListRequest<T = any>(options: ListRequestOptions<T>) {
-	const { key, delay, request, onSuccess } = options
+	const { key, delay, request, onSuccess, checkEmpty } = options
 	const isPullDownLoading = ref(false)
 	const isNetworkError = ref(false)
 	const isEmpty = ref(false)
+	const _checkEmpty = checkEmpty || (() => false)
 	const queryRes = useInfiniteQuery(
 		key,
 		// @ts-ignore
@@ -26,7 +28,7 @@ export function useListRequest<T = any>(options: ListRequestOptions<T>) {
 				request(page.pageParam)
 			])
 			// 空数据
-			isEmpty.value = data.first && data.numberOfElements === 0
+			isEmpty.value = data.first && _checkEmpty()
 			return data
 		},
 		{
@@ -37,8 +39,7 @@ export function useListRequest<T = any>(options: ListRequestOptions<T>) {
 				onSuccess && onSuccess(data)
 			},
 			onError(err: Error) {
-				isNetworkError.value =
-					err.message === 'Network Error' ? true : false
+				isNetworkError.value = err.message === 'Network Error' ? true : false
 				// 加载失败关闭下拉刷新的状态
 				isPullDownLoading.value = false
 			}
@@ -50,9 +51,9 @@ export function useListRequest<T = any>(options: ListRequestOptions<T>) {
 	}
 	// 触底加载下一页
 	onReachBottom(() => {
-    console.log('底部');
-    queryRes.fetchNextPage.value()
-  })
+		console.log('底部')
+		queryRes.fetchNextPage.value()
+	})
 	return {
 		isEmpty,
 		...queryRes,

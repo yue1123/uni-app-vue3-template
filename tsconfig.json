@@ -10,7 +10,7 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"lib": ["ESNext", "dom", "ESNext.Promise"],
-		"types": ["@dcloudio/types", "vite/client"],
+		"types": ["@dcloudio/types"],
 		"suppressImplicitAnyIndexErrors": true,
 		"baseUrl": "./",
 		// "importHelpers": true,

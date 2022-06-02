@@ -22,7 +22,7 @@ httpClient.interceptors.response.use(
 			Toast(response.data.data.errorMsg || '出错了')
 			return Promise.reject(response.data.data.errorMsg)
 		}
-		return response.data.data
+		return response.data
 	},
 	(error) => {
 		return Promise.reject(error)
