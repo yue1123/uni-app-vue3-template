@@ -51,7 +51,6 @@ export function useListRequest<T = any>(options: ListRequestOptions<T>) {
 	}
 	// 触底加载下一页
 	onReachBottom(() => {
-		console.log('底部')
 		queryRes.fetchNextPage.value()
 	})
 	return {

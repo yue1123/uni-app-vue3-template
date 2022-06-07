@@ -12,7 +12,7 @@
 
 这样能够有一个清晰的路由层级关系
 
-* 非复用页面组件(仅用来拆分逻辑的),就放在当前页面文件夹`components`下
+* 非复用页面组件(仅用来拆分页面复杂逻辑),就放在当前页面文件夹`components`下
 
 > 例如:
 > `src/pages/user/index.vue` 页面需要拆分用户列表项组件,就放在 `src/pages/user/components/UserListItem/index.vue`
