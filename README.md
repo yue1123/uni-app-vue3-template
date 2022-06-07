@@ -1,10 +1,10 @@
 # uni-app-vue3-template
 
-这是一个 `vue3` + `uni-app` + `vant` + `TS` 的 h5 应用的快速起手项目 cli 模板
+这是一个 `vue3` + `uni-app` + `vant` + `TS` 的 h5 项目快速起手 cli 模板
 
 -   完善的 ts 支持
 -   [vue-query](https://github.com/DamianOsipiuk/vue-query)
--   路径 alias
+-   路径 aliasCancel changes
 -   pnpm 包管理器
 -   axios 拦截器封装
 -   模块化的架构
