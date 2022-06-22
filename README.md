@@ -24,7 +24,8 @@ cd uni-app-vue3-template
 # install dependencies
 pnpm install
 # start
-npm run dev:h5
+pnpm run dev:h5
 ```
 
-ps：vite 虽快，但奇奇怪怪的问题还是挺多的，不建议在大型项目中使用，遇到问题，会让你崩溃的
+
+注意: 目前uni-app vue3版本还是beta版,如果某次重新安装依赖后,导致应用打包白屏,就用uni-app的脚手架工具重新创建一个项目,然后把package.json中的uni-app相关依赖复制到当前项目来,然后重新安装依赖
